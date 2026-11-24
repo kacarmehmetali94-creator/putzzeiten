@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="description" content="Arbeitszeit an Ferienwohnungen stempeln." data-i18n-content="app.description">
+<title data-i18n="app.title">Stempeluhr – Putzzeiten</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Putzzeiten">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+/* style.css – gemeinsames Stylesheet für Stempeluhr (index.html) und Auswertung (admin.html).
+   Mobile-first, große Touch-Ziele, Farben aus dem Designsystem (Indigo + Grün). */
+
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-soft: #eef2ff;
+  --accent: #047857;
+  --accent-dark: #065f46;
+  --danger: #b91c1c;
+  --amber: #b45309;
+  --amber-soft: #fffbeb;
+  --bg: #f5f5fb;
+  --card: #ffffff;
+  --text: #1e1b4b;
+  --muted: #5b5b7a;
+  --border: #e2e2f2;
+  --radius: 16px;
+  --shadow: 0 1px 2px rgba(30, 27, 75, .06), 0 10px 24px -12px rgba(30, 27, 75, .22);
+  --tap: 52px;
+}
+
+* { box-sizing: border-box; }
+
+/* hidden muss auch gegen display-Regeln (z. B. .btn, .photo-preview) gewinnen. */
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 env(safe-area-inset-bottom);
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+h1 { font-size: 1.35rem; margin: 0 0 .35rem; letter-spacing: -.01em; }
+h2 { font-size: 1.05rem; margin: 0 0 .75rem; letter-spacing: -.01em; }
+
+p { margin: 0 0 .75rem; }
+
+.muted { color: var(--muted); }
+.small { font-size: .85rem; }
+
+/* ---------------------------------------------------------------- Layout */
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 12px 14px calc(28px + env(safe-area-inset-bottom));
+}
+.wrap.wide { max-width: 1120px; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 2px 14px;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -.02em;
+  font-size: 1.05rem;
+}
+
+.topbar-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+/* ---------------------------------------------------------------- Sprache */
+
+.lang-switch {
+  display: inline-flex;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dcdcfb;
+  border-radius: 999px;
+}
+.lang-btn {
+  min-width: 44px;
+  min-height: 40px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.lang-btn.is-active { color: #fff; background: var(--primary); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > .field { flex: 1 1 130px; }
+.row-between {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------- Formular */
+
+.field { display: block; margin-bottom: 12px; }
+.field > span {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="month"],
+select,
+textarea {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  appearance: none;
+}
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 7.5 10 12.5 15 7.5' fill='none' stroke='%235b5b7a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+textarea { min-height: 84px; resize: vertical; }
+
+input:disabled, select:disabled {
+  background: #f4f4fa;
+  color: var(--muted);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, .45);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--tap);
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease, transform .1s ease;
+}
+.btn:hover { background: #f8f8fd; }
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-ghost { background: transparent; }
+.btn-sm { min-height: 40px; padding: 8px 14px; font-size: .9rem; }
+.btn[disabled] { opacity: .55; cursor: default; transform: none; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: var(--primary-soft);
+  border: 1px solid #dcdcfb;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip .chev { width: 18px; height: 18px; }
+
+/* ---------------------------------------------------------------- Kürzel-Auswahl */
+
+.kgrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.kbtn {
+  min-height: 64px;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.kbtn:hover { border-color: var(--primary); background: var(--primary-soft); }
+.kbtn:active { background: #e6e9ff; }
+
+/* ---------------------------------------------------------------- Stempeluhr */
+
+.clock { text-align: center; padding: 20px 16px 24px; }
+
+.status {
+  margin: 0 0 4px;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--muted);
+}
+
+.timer {
+  margin: 0;
+  font-size: clamp(2.6rem, 13vw, 3.6rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.seit { margin: 4px 0 18px; min-height: 1.2em; font-size: .9rem; color: var(--muted); }
+
+/* ---------------------------------------------------------------- Foto */
+
+.photo-field { margin-bottom: 14px; }
+.field-label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.photo-preview { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.photo-preview img {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* ---------------------------------------------------------------- Meine Zeiten */
+
+.mine-sum {
+  margin: 0 0 2px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stamp {
+  width: 100%;
+  min-height: 88px;
+  padding: 16px;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #fff;
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 22px -10px rgba(4, 120, 87, .8);
+  transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+}
+.stamp-start { background: var(--accent); }
+.stamp-start:hover { background: var(--accent-dark); }
+.stamp-stop { background: var(--danger); box-shadow: 0 10px 22px -10px rgba(185, 28, 28, .75); }
+.stamp-stop:hover { background: #991b1b; }
+.stamp:active { transform: translateY(1px); }
+.stamp[disabled] { opacity: .6; cursor: default; }
+
+/* ---------------------------------------------------------------- Hinweis / Badges */
+
+.hint {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  font-size: .9rem;
+  color: #1e3a8a;
+  background: #eff6ff;
+  border: 1px solid #c7ddff;
+  border-radius: 12px;
+}
+.hint[hidden] { display: none; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge-nachtrag { color: var(--amber); background: var(--amber-soft); border: 1px solid #fcd9a4; }
+.badge-warn { color: #fff; background: var(--danger); }
+.badge-pending { color: #4c1d95; background: #ede9fe; }
+.badge-demo { color: var(--amber); background: var(--amber-soft); border: 1px solid #fcd9a4; }
+.badge-live { color: #04543c; background: #ecfdf5; border: 1px solid #a7f3d0; }
+
+/* ---------------------------------------------------------------- Listen */
+
+.list { list-style: none; margin: 0; padding: 0; }
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.entry:first-child { border-top: 0; }
+.entry-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.entry-main strong { font-size: .95rem; font-weight: 600; }
+.entry-side { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.empty { padding: 8px 0; color: var(--muted); font-size: .9rem; }
+
+/* ---------------------------------------------------------------- Auswertung */
+
+.sums {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.sum {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.sum-title { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.sum-value { font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.sum-sub { font-size: .78rem; color: var(--muted); }
+
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+th, td { padding: 10px 12px; text-align: left; vertical-align: top; white-space: nowrap; }
+th {
+  font-size: .74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+  background: #fafaff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+tbody tr + tr td { border-top: 1px solid #f0f0f8; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.note { white-space: normal; min-width: 220px; max-width: 380px; word-break: break-word; color: var(--text); }
+
+.foto-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: var(--primary-dark);
+  background: var(--primary-soft);
+  border: 1px solid #dcdcfb;
+  border-radius: 9px;
+}
+.flags { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+tr.warn td { background: #fef2f2; }
+tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--danger); }
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+.toolbar .field { margin-bottom: 0; flex: 1 1 150px; }
+
+.legend { font-size: .8rem; color: var(--muted); margin: 0 0 14px; }
+
+.error { color: var(--danger); font-size: .9rem; min-height: 1.2em; margin: 6px 0 0; }
+
+/* ---------------------------------------------------------------- Tabs */
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1 1 auto;
+  min-height: 48px;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+.tab-btn.is-active { color: var(--primary-dark); border-bottom-color: var(--primary); }
+
+/* ---------------------------------------------------------------- Notizen */
+
+.notes-card { margin-bottom: 14px; }
+.notes-list { max-height: 340px; overflow: auto; }
+.note-entry { align-items: flex-start; }
+.note-text { color: var(--text); font-size: .95rem; white-space: pre-wrap; word-break: break-word; }
+.thumb {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------------------------- Verwalten */
+
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.add-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.add-form input { flex: 1 1 160px; min-height: var(--tap); }
+
+.admin-list { margin-top: 4px; }
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.admin-row:first-child { border-top: 0; }
+.admin-row-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 160px;
+  min-width: 140px;
+  word-break: break-word;
+}
+.admin-row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.rename-row { flex: 1 1 100%; }
+.btn-danger-text { color: var(--danger); }
+
+/* ---------------------------------------------------------------- Kleinere Screens */
+
+@media (min-width: 640px) {
+  .wrap { padding: 20px 20px 36px; }
+  .card { padding: 20px; }
+  .stamp { min-height: 96px; }
+}
+
+@media (min-width: 760px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <span class="brand" data-i18n="brand.clock">Stempeluhr</span>
+    <div class="topbar-right">
+      <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-aria-label="lang.label">
+        <button type="button" class="lang-btn" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="chip" id="btn-kuerzel" type="button" data-i18n-aria-label="kuerzel.chip">
+        <span id="chip-kuerzel">–</span>
+        <svg class="chev" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <p class="hint" id="hint" role="status" hidden></p>
+
+  <!-- ---------------------------------------------------- Kürzel wählen -->
+  <section class="card" id="screen-kuerzel" hidden>
+    <h1 data-i18n="kuerzel.title">Wer bist du?</h1>
+    <p class="muted" data-i18n="kuerzel.hint">Kürzel antippen. Es wird auf diesem Gerät gespeichert.</p>
+    <div class="kgrid" id="kgrid"></div>
+    <label class="field" for="inp-kuerzel">
+      <span data-i18n="kuerzel.other">Anderes Kürzel</span>
+      <input id="inp-kuerzel" type="text" maxlength="12" autocomplete="off"
+             placeholder="z. B. P9" data-i18n-placeholder="kuerzel.placeholder">
+    </label>
+    <button id="btn-kuerzel-save" class="btn btn-primary" type="button" data-i18n="kuerzel.continue">Weiter</button>
+  </section>
+
+  <!-- ---------------------------------------------------- Stempeluhr -->
+  <section id="screen-main" hidden>
+
+    <div class="card">
+      <label class="field" for="sel-objekt">
+        <span data-i18n="objekt.label">Standort</span>
+        <select id="sel-objekt"></select>
+      </label>
+    </div>
+
+    <div class="card clock">
+      <p class="status" id="status" data-i18n="clock.ready">Bereit</p>
+      <p class="timer" id="timer">00:00:00</p>
+      <p class="seit" id="seit"></p>
+      <button id="btn-stamp" class="stamp stamp-start" type="button" data-i18n="clock.start">Ankommen</button>
+    </div>
+
+    <!-- Abschluss mit Notiz und Foto -->
+    <div class="card" id="ende-panel" hidden>
+      <h2 data-i18n="ende.title">Einsatz beenden</h2>
+      <p class="muted" id="ende-info"></p>
+      <label class="field" for="inp-notiz">
+        <span data-i18n="ende.noteLabel">Notiz (optional)</span>
+        <textarea id="inp-notiz" rows="3" maxlength="300"
+                  placeholder="z. B. Reinigungsmittel leer"
+                  data-i18n-placeholder="ende.notePlaceholder"></textarea>
+      </label>
+
+      <div class="photo-field">
+        <span class="field-label" data-i18n="ende.photoLabel">Schadenfoto (optional)</span>
+        <input id="inp-foto" type="file" accept="image/*" capture="environment" hidden>
+        <button id="btn-foto-add" class="btn btn-ghost btn-sm" type="button" data-i18n="ende.photoAdd">Foto hinzufügen</button>
+        <div class="photo-preview" id="foto-preview" hidden>
+          <img id="foto-img" alt="" data-i18n-alt="ende.photoAlt">
+          <button id="btn-foto-remove" class="btn btn-ghost btn-sm" type="button" data-i18n="ende.photoRemove">Foto entfernen</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="btn-ende-save" class="btn btn-primary" type="button" data-i18n="ende.save">Speichern</button>
+        <button id="btn-ende-cancel" class="btn btn-ghost" type="button" data-i18n="ende.cancel">Weiterarbeiten</button>
+      </div>
+    </div>
+
+    <!-- Meine Zeiten (nur dieser Monat, nur dieses Gerät) -->
+    <div class="card mine-card">
+      <h2 data-i18n="mine.title">Meine Zeiten diesen Monat</h2>
+      <p class="mine-sum" id="mine-sum">–</p>
+      <p class="muted small" data-i18n="mine.local">nur auf diesem Gerät erfasst</p>
+    </div>
+
+    <!-- Nachtrag -->
+    <div class="card">
+      <div class="row-between">
+        <h2 data-i18n="nachtrag.title">Nachtrag</h2>
+        <button id="btn-nachtrag-toggle" class="btn btn-ghost btn-sm" type="button"
+                aria-expanded="false" aria-controls="form-nachtrag"
+                data-i18n="nachtrag.toggle">Eintrag nachtragen</button>
+      </div>
+      <form id="form-nachtrag" hidden>
+        <label class="field" for="n-datum">
+          <span data-i18n="nachtrag.date">Datum</span>
+          <input type="date" id="n-datum" required>
+        </label>
+        <div class="row">
+          <label class="field" for="n-von">
+            <span data-i18n="nachtrag.from">Von</span>
+            <input type="time" id="n-von" required>
+          </label>
+          <label class="field" for="n-bis">
+            <span data-i18n="nachtrag.to">Bis</span>
+            <input type="time" id="n-bis" required>
+          </label>
+        </div>
+        <label class="field" for="n-notiz">
+          <span data-i18n="ende.noteLabel">Notiz (optional)</span>
+          <input type="text" id="n-notiz" maxlength="300" autocomplete="off"
+                 placeholder="z. B. Reinigungsmittel leer"
+                 data-i18n-placeholder="ende.notePlaceholder">
+        </label>
+        <button class="btn btn-primary" type="submit" data-i18n="nachtrag.save">Nachtrag speichern</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="zuletzt.title">Zuletzt</h2>
+      <ul class="list" id="list-zuletzt"></ul>
+    </div>
+
+  </section>
+</div>
+
+<script>
+/* config.js */
+/* config.js – die einzige Datei, die beim Einrichten angepasst werden muss.
+   Bleiben SUPABASE_URL und SUPABASE_ANON_KEY leer, läuft die App im Demo-Modus
+   (alles landet im localStorage des Geräts). */
+'use strict';
+
+var CONFIG = {
+  /* Objekte, die in der Stempeluhr zur Auswahl stehen. */
+  OBJEKTE: ['Rehau', 'Bad Steben', 'Helmbrechts'],
+
+  /* Kürzel, die als Schnellauswahl angeboten werden. Freitext ist zusätzlich möglich. */
+  KUERZEL: ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8'],
+
+  /* Supabase: aus "Project Settings > API" kopieren. Leer = Demo-Modus. */
+  SUPABASE_URL: 'https://pvrrmvbdfwhmkkzslbbk.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_g6djTyc7H89xPw23-Cp2yg_YQx_nmFJ',
+
+  /* Optional: URL der Supabase Edge Function "notify". Nach jedem beendeten
+     Einsatz wird sie ohne Warten aufgerufen (E-Mail verschickt die Funktion).
+     Leer lassen = keine Benachrichtigung. */
+  NOTIFY_URL: 'https://pvrrmvbdfwhmkkzslbbk.supabase.co/functions/v1/notify'
+};
+
+</script>
+<script>
+/* i18n.js */
+/* i18n.js – zweisprachige Oberfläche (Deutsch/Englisch).
+   I18N enthält alle sichtbaren Texte. t(key, ...args) setzt {0}, {1} … ein.
+   Sprache: localStorage "pz_lang", sonst navigator.language (de* -> de, sonst en).
+   Elemente mit data-i18n / data-i18n-placeholder / -aria-label / -title / -alt /
+   -content werden von applyI18n() aus dem Wörterbuch gefüllt. */
+'use strict';
+
+var I18N = {
+  de: {
+    'lang.label': 'Sprache',
+
+    'app.title': 'Stempeluhr – Putzzeiten',
+    'app.description': 'Arbeitszeit an Ferienwohnungen stempeln.',
+    'admin.title': 'Auswertung – Putzzeiten',
+    'admin.description': 'Auswertung der Putzzeiten.',
+
+    'brand.clock': 'Stempeluhr',
+    'brand.admin': 'Putzzeiten · Auswertung',
+
+    /* ---------------------------------------------------------- Stempeluhr */
+    'kuerzel.chip': 'Kürzel anzeigen oder ändern',
+    'kuerzel.title': 'Wer bist du?',
+    'kuerzel.hint': 'Kürzel antippen. Es wird auf diesem Gerät gespeichert.',
+    'kuerzel.other': 'Anderes Kürzel',
+    'kuerzel.placeholder': 'z. B. P9',
+    'kuerzel.continue': 'Weiter',
+
+    'objekt.label': 'Standort',
+
+    'clock.ready': 'Bereit',
+    'clock.running': 'Läuft · {0} · {1}',
+    'clock.arrived': 'Angekommen {0} Uhr',
+    'clock.start': 'Ankommen',
+    'clock.stop': 'Fertig',
+
+    'ende.title': 'Einsatz beenden',
+    'ende.info': '{0} · {1}–{2} Uhr · {3} Stunden',
+    'ende.noteLabel': 'Notiz (optional)',
+    'ende.notePlaceholder': 'z. B. Reinigungsmittel leer',
+    'ende.photoLabel': 'Schadenfoto (optional)',
+    'ende.photoAdd': 'Foto hinzufügen',
+    'ende.photoRemove': 'Foto entfernen',
+    'ende.photoAlt': 'Vorschau des Fotos',
+    'ende.save': 'Speichern',
+    'ende.saving': 'Speichern …',
+    'ende.cancel': 'Weiterarbeiten',
+
+    'nachtrag.title': 'Nachtrag',
+    'nachtrag.toggle': 'Eintrag nachtragen',
+    'nachtrag.date': 'Datum',
+    'nachtrag.from': 'Von',
+    'nachtrag.to': 'Bis',
+    'nachtrag.save': 'Nachtrag speichern',
+
+    'zuletzt.title': 'Zuletzt',
+    'zuletzt.empty': 'Noch keine Einträge in diesem Monat.',
+    'zuletzt.running': 'läuft',
+
+    'mine.title': 'Meine Zeiten diesen Monat',
+    'mine.summary': '{0} Einsätze · {1} Stunden',
+    'mine.summaryOne': '{0} Einsatz · {1} Stunden',
+    'mine.local': 'nur auf diesem Gerät erfasst',
+
+    'badge.nachtrag': 'Nachtrag',
+    'badge.pending': 'wartet',
+
+    'hint.kuerzelNeeded': 'Bitte ein Kürzel wählen oder eingeben.',
+    'hint.kuerzelSaved': 'Kürzel gespeichert: {0}',
+    'hint.offline': 'Keine Verbindung – Eintrag wird lokal gespeichert und später gesendet.',
+    'hint.arrived': 'Angekommen um {0} Uhr in {1}.',
+    'hint.saved': 'Gespeichert: {0} Stunden in {1}.',
+    'hint.fotoFailed': 'Foto konnte nicht hochgeladen werden – der Einsatz wurde ohne Foto gespeichert.',
+    'hint.fotoRead': 'Das Foto konnte nicht gelesen werden.',
+    'hint.nachtragFields': 'Bitte Datum, Von und Bis ausfüllen.',
+    'hint.nachtragOrder': '„Bis“ muss nach „Von“ liegen.',
+    'hint.nachtragLocal': 'Nachtrag lokal gespeichert – wird später gesendet.',
+    'hint.nachtragSaved': 'Nachtrag gespeichert ({0} h).',
+    'hint.demo': 'Demo-Modus: Einträge liegen nur auf diesem Gerät (kein Supabase konfiguriert).',
+    'hint.queue': '{0} Eintrag/Einträge warten auf Übertragung.',
+    'hint.sent': '{0} Eintrag/Einträge nachgesendet.',
+
+    'err.nameEmpty': 'Bitte einen Namen eingeben.',
+    'err.kuerzelEmpty': 'Bitte ein Kürzel eingeben.',
+    'err.exists': 'Gibt es schon.',
+    'err.notFound': 'Eintrag nicht gefunden.',
+    'err.notAllowed': 'Keine Berechtigung – bitte im Admin anmelden.',
+
+    /* ---------------------------------------------------------- Auswertung */
+    'mode.demo': 'Demo-Modus',
+    'mode.live': 'Supabase',
+
+    'login.title': 'Anmeldung',
+    'login.hintDemo': 'Demo-Modus: kein Login nötig – Passwort „demo“ eingeben. Die Daten liegen nur in diesem Browser.',
+    'login.hintLive': 'Anmeldung mit dem Admin-Konto (Supabase).',
+    'login.email': 'E-Mail',
+    'login.pw': 'Passwort',
+    'login.submit': 'Anmelden',
+    'login.wrongDemo': 'Falsches Passwort (Demo: „demo“).',
+    'login.failed': 'Anmeldung fehlgeschlagen: {0}',
+
+    'toolbar.month': 'Monat',
+    'toolbar.kuerzel': 'Kürzel',
+    'toolbar.objekt': 'Standort',
+    'toolbar.csv': 'CSV exportieren',
+    'toolbar.reload': 'Neu laden',
+    'toolbar.logout': 'Abmelden',
+
+    'tab.report': 'Auswertung',
+    'tab.manage': 'Verwalten',
+
+    'status.loading': 'Lade …',
+    'status.offline': 'Keine Verbindung zur Datenbank – angezeigt wird der lokale Zwischenspeicher.',
+    'status.count': '{0} Einträge im Monat.',
+
+    'filter.allKuerzel': 'Alle Kürzel',
+    'filter.allObjekte': 'Alle Standorte',
+
+    'table.date': 'Datum',
+    'table.kuerzel': 'Kürzel',
+    'table.objekt': 'Standort',
+    'table.from': 'Von',
+    'table.to': 'Bis',
+    'table.hours': 'Stunden',
+    'table.note': 'Notiz',
+    'table.flags': 'Hinweise',
+    'table.empty': 'Keine Einträge für diese Auswahl.',
+    'table.running': 'läuft',
+
+    'flags.added': 'nachtragen',
+    'flags.unusual': 'auffällig',
+    'flags.pending': 'wartet',
+
+    'notes.title': 'Notizen',
+    'notes.empty': 'Keine Notizen in diesem Monat.',
+
+    'photo.open': 'Foto in neuem Tab öffnen',
+    'photo.thumbAlt': 'Foto zum Einsatz',
+
+    'sums.month': 'Monat gesamt',
+    'sums.shifts': '{0} Einsätze (inkl. laufender)',
+    'sums.shiftsOne': '{0} Einsatz (inkl. laufender)',
+    'sums.kuerzel': 'Kürzel {0}',
+    'sums.objekt': 'Standort {0}',
+    'sums.shiftN': '{0} Einsätze',
+    'sums.shiftOne': '{0} Einsatz',
+
+    'legend': 'Rot markiert: Einsätze unter 10 Minuten oder über 12 Stunden (auch laufende Einsätze). „{0}“ = manuell eingetragen. „{1}“ = noch nicht an die Datenbank übertragen.',
+
+    'csv.date': 'Datum',
+    'csv.kuerzel': 'Kürzel',
+    'csv.objekt': 'Standort',
+    'csv.from': 'Von',
+    'csv.to': 'Bis',
+    'csv.hours': 'Stunden',
+    'csv.note': 'Notiz',
+    'csv.added': 'Nachgetragen',
+    'csv.unusual': 'Auffällig',
+    'csv.yes': 'ja',
+    'csv.no': 'nein',
+
+    'manage.standorte': 'Standorte',
+    'manage.personal': 'Personal',
+    'manage.newStandort': 'Neuer Standort',
+    'manage.newPersonal': 'Neues Kürzel',
+    'manage.add': 'Hinzufügen',
+    'manage.rename': 'Umbenennen',
+    'manage.save': 'Speichern',
+    'manage.cancel': 'Abbrechen',
+    'manage.delete': 'Löschen',
+    'manage.activate': 'Aktivieren',
+    'manage.deactivate': 'Deaktivieren',
+    'manage.inactive': 'inaktiv',
+    'manage.empty': 'Noch keine Einträge.',
+    'manage.hintDemo': 'Demo-Modus: Standorte und Personal werden nur auf diesem Gerät gespeichert.',
+    'manage.confirmDelete': '„{0}“ wirklich löschen?',
+    'manage.saved': 'Gespeichert.',
+    'manage.deleted': 'Gelöscht.',
+    'manage.error': 'Änderung fehlgeschlagen: {0}'
+  },
+
+  en: {
+    'lang.label': 'Language',
+
+    'app.title': 'Time clock – Cleaning times',
+    'app.description': 'Record working time at holiday flats.',
+    'admin.title': 'Report – Cleaning times',
+    'admin.description': 'Report of the cleaning times.',
+
+    'brand.clock': 'Time clock',
+    'brand.admin': 'Cleaning times · Report',
+
+    'kuerzel.chip': 'Show or change initials',
+    'kuerzel.title': 'Who are you?',
+    'kuerzel.hint': 'Tap your initials. They are saved on this device.',
+    'kuerzel.other': 'Other initials',
+    'kuerzel.placeholder': 'e.g. P9',
+    'kuerzel.continue': 'Continue',
+
+    'objekt.label': 'Location',
+
+    'clock.ready': 'Ready',
+    'clock.running': 'Running · {0} · {1}',
+    'clock.arrived': 'Arrived at {0}',
+    'clock.start': 'Arrive',
+    'clock.stop': 'Done',
+
+    'ende.title': 'Finish shift',
+    'ende.info': '{0} · {1}–{2} · {3} hours',
+    'ende.noteLabel': 'Note (optional)',
+    'ende.notePlaceholder': 'e.g. cleaning supplies empty',
+    'ende.photoLabel': 'Damage photo (optional)',
+    'ende.photoAdd': 'Add photo',
+    'ende.photoRemove': 'Remove photo',
+    'ende.photoAlt': 'Photo preview',
+    'ende.save': 'Save',
+    'ende.saving': 'Saving …',
+    'ende.cancel': 'Keep working',
+
+    'nachtrag.title': 'Add entry',
+    'nachtrag.toggle': 'Add a past entry',
+    'nachtrag.date': 'Date',
+    'nachtrag.from': 'From',
+    'nachtrag.to': 'To',
+    'nachtrag.save': 'Save entry',
+
+    'zuletzt.title': 'Recent',
+    'zuletzt.empty': 'No entries this month yet.',
+    'zuletzt.running': 'running',
+
+    'mine.title': 'My hours this month',
+    'mine.summary': '{0} shifts · {1} hours',
+    'mine.summaryOne': '{0} shift · {1} hours',
+    'mine.local': 'recorded on this device only',
+
+    'badge.nachtrag': 'Added',
+    'badge.pending': 'pending',
+
+    'hint.kuerzelNeeded': 'Please choose or enter your initials.',
+    'hint.kuerzelSaved': 'Initials saved: {0}',
+    'hint.offline': 'No connection – the entry is saved locally and sent later.',
+    'hint.arrived': 'Arrived at {0} in {1}.',
+    'hint.saved': 'Saved: {0} hours in {1}.',
+    'hint.fotoFailed': 'The photo could not be uploaded – the shift was saved without it.',
+    'hint.fotoRead': 'The photo could not be read.',
+    'hint.nachtragFields': 'Please fill in date, from and to.',
+    'hint.nachtragOrder': '“To” must be after “From”.',
+    'hint.nachtragLocal': 'Entry saved locally – it will be sent later.',
+    'hint.nachtragSaved': 'Entry saved ({0} h).',
+    'hint.demo': 'Demo mode: entries stay on this device (Supabase is not configured).',
+    'hint.queue': '{0} entry/entries waiting to be sent.',
+    'hint.sent': '{0} entry/entries sent.',
+
+    'err.nameEmpty': 'Please enter a name.',
+    'err.kuerzelEmpty': 'Please enter initials.',
+    'err.exists': 'Already exists.',
+    'err.notFound': 'Entry not found.',
+    'err.notAllowed': 'Not allowed – please sign in as admin.',
+
+    'mode.demo': 'Demo mode',
+    'mode.live': 'Supabase',
+
+    'login.title': 'Sign in',
+    'login.hintDemo': 'Demo mode: no login needed – enter the password “demo”. The data stays in this browser.',
+    'login.hintLive': 'Sign in with the admin account (Supabase).',
+    'login.email': 'Email',
+    'login.pw': 'Password',
+    'login.submit': 'Sign in',
+    'login.wrongDemo': 'Wrong password (demo: “demo”).',
+    'login.failed': 'Sign-in failed: {0}',
+
+    'toolbar.month': 'Month',
+    'toolbar.kuerzel': 'Initials',
+    'toolbar.objekt': 'Location',
+    'toolbar.csv': 'Export CSV',
+    'toolbar.reload': 'Reload',
+    'toolbar.logout': 'Sign out',
+
+    'tab.report': 'Report',
+    'tab.manage': 'Manage',
+
+    'status.loading': 'Loading …',
+    'status.offline': 'No connection to the database – showing the local cache.',
+    'status.count': '{0} entries this month.',
+
+    'filter.allKuerzel': 'All initials',
+    'filter.allObjekte': 'All locations',
+
+    'table.date': 'Date',
+    'table.kuerzel': 'Initials',
+    'table.objekt': 'Location',
+    'table.from': 'From',
+    'table.to': 'To',
+    'table.hours': 'Hours',
+    'table.note': 'Note',
+    'table.flags': 'Flags',
+    'table.empty': 'No entries for this selection.',
+    'table.running': 'running',
+
+    'flags.added': 'added',
+    'flags.unusual': 'unusual',
+    'flags.pending': 'pending',
+
+    'notes.title': 'Notes',
+    'notes.empty': 'No notes this month.',
+
+    'photo.open': 'Open photo in a new tab',
+    'photo.thumbAlt': 'Photo of the shift',
+
+    'sums.month': 'Month total',
+    'sums.shifts': '{0} shifts (incl. running)',
+    'sums.shiftsOne': '{0} shift (incl. running)',
+    'sums.kuerzel': 'Initials {0}',
+    'sums.objekt': 'Location {0}',
+    'sums.shiftN': '{0} shifts',
+    'sums.shiftOne': '{0} shift',
+
+    'legend': 'Marked red: shifts under 10 minutes or over 12 hours (running shifts included). “{0}” = entered manually. “{1}” = not yet sent to the database.',
+
+    'csv.date': 'Date',
+    'csv.kuerzel': 'Initials',
+    'csv.objekt': 'Location',
+    'csv.from': 'From',
+    'csv.to': 'To',
+    'csv.hours': 'Hours',
+    'csv.note': 'Note',
+    'csv.added': 'Added manually',
+    'csv.unusual': 'Unusual',
+    'csv.yes': 'yes',
+    'csv.no': 'no',
+
+    'manage.standorte': 'Locations',
+    'manage.personal': 'Staff',
+    'manage.newStandort': 'New location',
+    'manage.newPersonal': 'New initials',
+    'manage.add': 'Add',
+    'manage.rename': 'Rename',
+    'manage.save': 'Save',
+    'manage.cancel': 'Cancel',
+    'manage.delete': 'Delete',
+    'manage.activate': 'Activate',
+    'manage.deactivate': 'Deactivate',
+    'manage.inactive': 'inactive',
+    'manage.empty': 'No entries yet.',
+    'manage.hintDemo': 'Demo mode: locations and staff are saved on this device only.',
+    'manage.confirmDelete': 'Really delete “{0}”?',
+    'manage.saved': 'Saved.',
+    'manage.deleted': 'Deleted.',
+    'manage.error': 'Change failed: {0}'
+  }
+};
+
+var Lang = (function () {
+  'use strict';
+
+  var KEY = 'pz_lang';
+  var current = 'de';
+
+  function detect() {
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) { /* gesperrt */ }
+    if (saved === 'de' || saved === 'en') return saved;
+    var nav = (typeof navigator !== 'undefined' && navigator.language)
+      ? String(navigator.language).toLowerCase() : '';
+    return nav.indexOf('de') === 0 ? 'de' : 'en';
+  }
+
+  function format(tpl, args) {
+    return String(tpl).replace(/\{(\d+)\}/g, function (m, i) {
+      return args[+i] != null ? String(args[+i]) : m;
+    });
+  }
+
+  function t(key) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    var dict = I18N[current] || I18N.de;
+    var val = dict[key];
+    if (val == null) val = I18N.de[key];
+    if (val == null) return String(key);
+    return format(val, args);
+  }
+
+  var ATTRS = ['placeholder', 'aria-label', 'title', 'alt', 'content'];
+
+  function syncButtons() {
+    if (typeof document === 'undefined') return;
+    var btns = document.querySelectorAll('[data-lang]');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', String(btns[i].getAttribute('data-lang') === current));
+      btns[i].classList.toggle('is-active', btns[i].getAttribute('data-lang') === current);
+    }
+  }
+
+  function apply(root) {
+    if (typeof document === 'undefined') return;
+    var scope = root || document;
+    var nodes = scope.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].textContent = t(nodes[i].getAttribute('data-i18n'));
+    }
+    ATTRS.forEach(function (attr) {
+      var list = scope.querySelectorAll('[data-i18n-' + attr + ']');
+      for (var j = 0; j < list.length; j++) {
+        list[j].setAttribute(attr, t(list[j].getAttribute('data-i18n-' + attr)));
+      }
+    });
+    document.documentElement.lang = current;
+    syncButtons();
+  }
+
+  function set(l) {
+    current = (l === 'en') ? 'en' : 'de';
+    try { localStorage.setItem(KEY, current); } catch (e) { /* gesperrt */ }
+    apply();
+    if (typeof document !== 'undefined' && typeof CustomEvent === 'function') {
+      document.dispatchEvent(new CustomEvent('pz-langchange', { detail: { lang: current } }));
+    }
+  }
+
+  function bind(root) {
+    if (typeof document === 'undefined') return;
+    var scope = root || document;
+    var btns = scope.querySelectorAll('[data-lang]');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        if (b.dataset.pzBound === '1') return;
+        b.dataset.pzBound = '1';
+        b.addEventListener('click', function () {
+          if (current !== b.getAttribute('data-lang')) set(b.getAttribute('data-lang'));
+        });
+      })(btns[i]);
+    }
+    syncButtons();
+  }
+
+  function start() {
+    current = detect();
+    if (typeof document === 'undefined') return;
+    document.documentElement.lang = current;
+    apply();
+    bind();
+  }
+
+  return { t: t, apply: apply, set: set, get: function () { return current; }, bind: bind, start: start };
+})();
+
+function t(key) { return Lang.t.apply(Lang, arguments); }
+function getLang() { return Lang.get(); }
+function setLang(l) { Lang.set(l); }
+function applyI18n(root) { Lang.apply(root); }
+
+Lang.start();
+
+</script>
+<script>
+/* store.js */
+/* store.js – Datenzugriff mit zwei Backends (gleiche API für beide):
+     * Supabase, wenn CONFIG.SUPABASE_URL + SUPABASE_ANON_KEY gesetzt sind
+     * Demo, wenn nicht: localStorage
+   Beide Backends spiegeln zusätzlich in den lokalen Cache, damit die Stempeluhr
+   offline weiterläuft. Schreibvorgänge, die Supabase nicht erreichen, landen in
+   einer Warteschlange (pz_queue) und werden beim nächsten Aufruf nachgesendet.
+   Einsätze werden über die RPC zeiten_beenden() abgeschlossen (anon darf die
+   Tabelle nicht direkt aktualisieren). */
+'use strict';
+
+var Store = (function () {
+  'use strict';
+
+  var KEY = {
+    zeiten: 'pz_zeiten',
+    queue: 'pz_queue',
+    kuerzel: 'pz_kuerzel',
+    demoAuth: 'pz_demo_auth',
+    standorte: 'pz_standorte',
+    personal: 'pz_personal'
+  };
+
+  var TZ = 'Europe/Berlin';
+  var mode = 'demo';   // 'demo' | 'supabase'
+  var sb = null;       // Supabase-Client für Admin (kann Sitzung halten)
+  var sbAnon = null;   // Supabase-Client für die Stempeluhr (immer ohne Sitzung)
+
+  function msg(key) { return (typeof t === 'function') ? t(key) : key; }
+
+  /* ---------------------------------------------------------------- Speicher */
+
+  function read(key, fallback) {
+    try {
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) { return fallback; }
+  }
+
+  function write(key, val) {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { /* Speicher voll */ }
+  }
+
+  function uuid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
+  function cache() { return read(KEY.zeiten, []); }
+  function saveCache(arr) { write(KEY.zeiten, arr); }
+
+  function cacheGet(id) {
+    var arr = cache();
+    for (var i = 0; i < arr.length; i++) if (arr[i].id === id) return arr[i];
+    return null;
+  }
+
+  function cachePut(rec) {
+    var arr = cache();
+    var i = arr.findIndex(function (z) { return z.id === rec.id; });
+    if (i >= 0) arr[i] = Object.assign({}, arr[i], rec);
+    else arr.push(rec);
+    saveCache(arr);
+    return rec;
+  }
+
+  function cachePatch(id, patch) {
+    var arr = cache();
+    var i = arr.findIndex(function (z) { return z.id === id; });
+    if (i < 0) return null;
+    arr[i] = Object.assign({}, arr[i], patch);
+    saveCache(arr);
+    return arr[i];
+  }
+
+  /* "_pending" (nur lokal, wartet auf Übertragung) aus dem Cache entfernen. */
+  function clearPending(id) {
+    var arr = cache();
+    var i = arr.findIndex(function (z) { return z.id === id; });
+    if (i < 0 || !('_pending' in arr[i])) return;
+    delete arr[i]._pending;
+    saveCache(arr);
+  }
+
+  function queue() { return read(KEY.queue, []); }
+  function queuePush(op) { var q = queue(); q.push(op); write(KEY.queue, q); }
+
+  /* ------------------------------------------------------------- Zeit-Helfer */
+
+  var dtf = new Intl.DateTimeFormat('en-GB', {
+    timeZone: TZ, hour12: false,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+
+  /* Wanduhr-Werte in Europe/Berlin (auch wenn das Gerät anders eingestellt ist). */
+  function parts(ts) {
+    var d = new Date(ts);
+    var o = {};
+    dtf.formatToParts(d).forEach(function (p) { if (p.type !== 'literal') o[p.type] = p.value; });
+    return { y: +o.year, m: +o.month, d: +o.day, h: +o.hour % 24, mi: +o.minute, s: +o.second };
+  }
+
+  /* Differenz Berlin-Zeit minus UTC in ms (+1 h Winter, +2 h Sommer). */
+  function offsetMs(ts) {
+    var d = new Date(ts);
+    var base = Math.floor(d.getTime() / 1000) * 1000;
+    var p = parts(base);
+    return Date.UTC(p.y, p.m - 1, p.d, p.h, p.mi, p.s) - base;
+  }
+
+  /* Berliner Wanduhr-Zeit -> UTC-Millisekunden. */
+  function zonedToUtc(y, m, d, h, mi) {
+    var wall = Date.UTC(y, m - 1, d, h || 0, mi || 0, 0);
+    var ts = wall - offsetMs(wall);
+    ts = wall - offsetMs(ts);
+    return ts;
+  }
+
+  /* Monatsgrenzen (Berlin) als ISO-Strings für Supabase-Filter. */
+  function monthRange(y, m) {
+    var fromMs = zonedToUtc(y, m, 1, 0, 0);
+    var ny = m === 12 ? y + 1 : y;
+    var nm = m === 12 ? 1 : m + 1;
+    var nextMs = zonedToUtc(ny, nm, 1, 0, 0);
+    return {
+      fromMs: fromMs,
+      toMs: nextMs - 1,
+      from: new Date(fromMs).toISOString(),
+      to: new Date(nextMs - 1).toISOString()
+    };
+  }
+
+  function msToHms(ms) {
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var h = Math.floor(s / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    var r = s % 60;
+    return [h, m, r].map(function (n) { return String(n).padStart(2, '0'); }).join(':');
+  }
+
+  function hours(ms) { return ms / 3600000; }
+
+  function fmtHours(ms) {
+    var loc = (typeof getLang === 'function' && getLang() === 'en') ? 'en-GB' : 'de-DE';
+    return hours(ms).toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function fmtTime(ts) {
+    var p = parts(ts);
+    return String(p.h).padStart(2, '0') + ':' + String(p.mi).padStart(2, '0');
+  }
+
+  function fmtDate(ts) {
+    var p = parts(ts);
+    return String(p.d).padStart(2, '0') + '.' + String(p.m).padStart(2, '0') + '.' + p.y;
+  }
+
+  function nowParts() { return parts(Date.now()); }
+
+  /* ------------------------------------------------------------ Supabase-Teil */
+
+  function hasSupabase() {
+    var u = (typeof CONFIG !== 'undefined' && CONFIG.SUPABASE_URL) ? String(CONFIG.SUPABASE_URL).trim() : '';
+    var k = (typeof CONFIG !== 'undefined' && CONFIG.SUPABASE_ANON_KEY) ? String(CONFIG.SUPABASE_ANON_KEY).trim() : '';
+    if (!u || !k) return false;
+    if (!/^https?:\/\//.test(u)) return false;
+    if (/dein-projekt|your-project|xxxx/i.test(u)) return false;
+    return true;
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error('supabase-js konnte nicht geladen werden')); };
+      document.head.appendChild(s);
+      setTimeout(function () { reject(new Error('supabase-js: Zeitüberschreitung')); }, 8000);
+    });
+  }
+
+  function offlineError() {
+    var e = new Error('keine Verbindung');
+    e.offline = true;
+    return e;
+  }
+
+  /* lokale Flags (_pending) nicht an die Datenbank senden */
+  function clean(obj) {
+    var out = {};
+    Object.keys(obj || {}).forEach(function (k) {
+      if (k.charAt(0) !== '_') out[k] = obj[k];
+    });
+    return out;
+  }
+
+  async function remoteInsert(rec) {
+    if (!sbAnon) throw offlineError();
+    var res = await sbAnon.from('zeiten').insert(clean(rec));
+    if (res.error) throw res.error;
+  }
+
+  /* Abschluss eines Einsatzes: anon hat kein UPDATE-Recht, deshalb RPC. */
+  async function remoteUpdate(id, patch) {
+    if (!sbAnon) throw offlineError();
+    var res = await sbAnon.rpc('zeiten_beenden', {
+      p_id: id,
+      p_ende: (patch && patch.ende_ts) || null,
+      p_notiz: (patch && patch.notiz) || null,
+      p_foto: (patch && patch.foto_url) || null
+    });
+    if (res.error) throw res.error;
+  }
+
+  /* E-Mail-Benachrichtigung: nur Aufruf, Versand macht die Edge Function.
+     Fire-and-forget, kein Fehler darf den Ablauf stören. */
+  function notifyEnde(id, patch) {
+    var url = (typeof CONFIG !== 'undefined' && CONFIG.NOTIFY_URL) ? String(CONFIG.NOTIFY_URL).trim() : '';
+    if (!url || !/^https?:\/\//.test(url)) return;
+    var rec = cacheGet(id) || {};
+    var body = {
+      kuerzel: rec.kuerzel || '',
+      objekt: rec.objekt || '',
+      start_ts: rec.start_ts || null,
+      ende_ts: (patch && patch.ende_ts) || rec.ende_ts || null,
+      notiz: (patch && patch.notiz != null) ? patch.notiz : (rec.notiz || null),
+      foto_url: (patch && patch.foto_url != null) ? patch.foto_url : (rec.foto_url || null)
+    };
+    if (!body.ende_ts) return;
+    try {
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      }).then(function (res) {
+        if (!res.ok) console.warn('notify: HTTP ' + res.status);
+      }).catch(function (e) {
+        console.warn('notify:', (e && e.message) ? e.message : e);
+      });
+    } catch (e) {
+      console.warn('notify:', (e && e.message) ? e.message : e);
+    }
+  }
+
+  /* ------------------------------------------------------------- Öffentliche API */
+
+  async function init() {
+    mode = hasSupabase() ? 'supabase' : 'demo';
+    if (mode === 'supabase') {
+      try {
+        if (!window.supabase) await loadScript('https://unpkg.com/@supabase/supabase-js@2');
+        if (window.supabase && window.supabase.createClient) {
+          /* Standard-Client: kann eine Admin-Sitzung halten (admin.html). */
+          sb = window.supabase.createClient(
+            CONFIG.SUPABASE_URL.trim(),
+            CONFIG.SUPABASE_ANON_KEY.trim(),
+            { auth: { persistSession: true, autoRefreshToken: true } }
+          );
+          /* Zweiter Client für die Stempeluhr: bewusst OHNE Sitzung und mit
+             eigenem Storage-Schlüssel. Sonst würde auf einem Gerät, auf dem
+             sich der Admin angemeldet hat, auch die Stempeluhr als
+             "authenticated" laufen – und die Schreibrechte (anon) nicht haben. */
+          sbAnon = window.supabase.createClient(
+            CONFIG.SUPABASE_URL.trim(),
+            CONFIG.SUPABASE_ANON_KEY.trim(),
+            { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'pz-cleaner' } }
+          );
+        }
+      } catch (e) { sb = null; }
+    }
+    try { await flush(); } catch (e) { /* Warteschlange bleibt liegen */ }
+    return mode;
+  }
+
+  /* Nachsenden: gibt die Anzahl erfolgreich übertragener Vorgänge zurück.
+     Bei einem Fehler bleibt der Rest in der Warteschlange (Reihenfolge zählt). */
+  async function flush() {
+    if (mode !== 'supabase') { write(KEY.queue, []); return 0; }
+    var q = queue();
+    if (!q.length) return 0;
+    var sent = 0;
+    var rest = [];
+    var sentIds = [];
+    for (var i = 0; i < q.length; i++) {
+      var op = q[i];
+      try {
+        if (op.type === 'insert') await remoteInsert(op.rec);
+        else if (op.type === 'update') await remoteUpdate(op.id, op.patch);
+        sent++;
+        sentIds.push(op.type === 'insert' ? op.rec.id : op.id);
+        if (op.type === 'update') notifyEnde(op.id, op.patch);
+      } catch (e) {
+        if (e && e.code === '23505') { // Datensatz existierte schon
+          sent++;
+          sentIds.push(op.type === 'insert' ? op.rec.id : op.id);
+          continue;
+        }
+        rest = q.slice(i);
+        break;
+      }
+    }
+    write(KEY.queue, rest);
+
+    /* Bekannter Fehler: "WARTET" blieb nach erfolgreichem Senden stehen.
+       Deshalb hier die lokale Markierung entfernen – aber nur, wenn für den
+       Eintrag kein weiterer Vorgang in der Warteschlange liegt. */
+    sentIds.forEach(function (id) {
+      var still = rest.some(function (op) {
+        return (op.type === 'insert' ? op.rec.id : op.id) === id;
+      });
+      if (!still) clearPending(id);
+    });
+
+    return sent;
+  }
+
+  /* Eintrag anlegen. Gibt immer einen Datensatz zurück; ist _pending true,
+     liegt er nur lokal in der Warteschlange. */
+  async function insertZeit(data) {
+    var rec = {
+      id: data.id || uuid(),
+      kuerzel: String(data.kuerzel || '').trim(),
+      objekt: String(data.objekt || '').trim(),
+      start_ts: data.start_ts || new Date().toISOString(),
+      ende_ts: data.ende_ts || null,
+      notiz: data.notiz || null,
+      foto_url: data.foto_url || null,
+      nachgetragen: !!data.nachgetragen,
+      created_at: new Date().toISOString()
+    };
+    cachePut(rec);
+    if (mode === 'demo') return rec;
+    try {
+      await remoteInsert(rec);
+      return rec;
+    } catch (e) {
+      rec._pending = true;
+      cachePut(rec);
+      queuePush({ type: 'insert', rec: rec });
+      return rec;
+    }
+  }
+
+  /* Eintrag ändern (Fertig-Stempeln, Notiz, Foto). */
+  async function updateZeit(id, patch) {
+    var rec = cachePatch(id, patch);
+    if (!rec) throw new Error(msg('err.notFound'));
+    if (mode === 'demo') return rec;
+
+    var nochInWarteschlange = queue().some(function (op) {
+      return op.type === 'insert' && op.rec.id === id;
+    });
+    if (nochInWarteschlange) {
+      queuePush({ type: 'update', id: id, patch: patch });
+      rec._pending = true;
+      return cachePut(rec);
+    }
+    try {
+      await remoteUpdate(id, patch);
+      clearPending(id);
+      notifyEnde(id, patch);
+      return cacheGet(id) || rec;
+    } catch (e) {
+      queuePush({ type: 'update', id: id, patch: patch });
+      rec._pending = true;
+      return cachePut(rec);
+    }
+  }
+
+  /* Offener Einsatz (ende_ts null), optional auf ein Kürzel beschränkt. */
+  function getOffene(kuerzel) {
+    var arr = cache().filter(function (z) { return !z.ende_ts; });
+    if (kuerzel) arr = arr.filter(function (z) { return z.kuerzel === kuerzel; });
+    arr.sort(function (a, b) { return Date.parse(b.start_ts) - Date.parse(a.start_ts); });
+    return arr[0] || null;
+  }
+
+  /* Liste für einen Zeitraum. offline=true heißt: Daten kommen aus dem Cache. */
+  async function listZeiten(opts) {
+    var from = opts && opts.from;
+    var to = opts && opts.to;
+
+    if (mode === 'supabase' && sb) {
+      try {
+        var q = sb.from('zeiten').select('*').order('start_ts', { ascending: true });
+        if (from) q = q.gte('start_ts', from);
+        if (to) q = q.lte('start_ts', to);
+        var res = await q;
+        if (res.error) throw res.error;
+        (res.data || []).forEach(cachePut); // für den Offline-Fall mitspiegeln
+        return { list: res.data || [], offline: false };
+      } catch (e) { /* unten Cache-Fallback */ }
+    }
+
+    var fMs = from ? Date.parse(from) : -Infinity;
+    var tMs = to ? Date.parse(to) : Infinity;
+    var arr = cache().filter(function (z) {
+      var t = Date.parse(z.start_ts);
+      return t >= fMs && t <= tMs;
+    }).sort(function (a, b) { return Date.parse(a.start_ts) - Date.parse(b.start_ts); });
+
+    return { list: arr, offline: mode === 'supabase' };
+  }
+
+  /* Synchron, nur Cache: für die "Zuletzt"-Liste in der Stempeluhr. */
+  function listCached(opts) {
+    var fMs = opts && opts.fromMs != null ? opts.fromMs : -Infinity;
+    var tMs = opts && opts.toMs != null ? opts.toMs : Infinity;
+    return cache().filter(function (z) {
+      var t = Date.parse(z.start_ts);
+      return t >= fMs && t <= tMs;
+    }).sort(function (a, b) { return Date.parse(a.start_ts) - Date.parse(b.start_ts); });
+  }
+
+  /* ------------------------------------------------------- Standorte/Personal */
+
+  function byOrder(a, b) {
+    var sa = a.sortierung == null ? 100 : a.sortierung;
+    var sbv = b.sortierung == null ? 100 : b.sortierung;
+    if (sa !== sbv) return sa - sbv;
+    return String(a.name || a.kuerzel || '').localeCompare(String(b.name || b.kuerzel || ''));
+  }
+
+  function defaultStandorte() {
+    var names = (typeof CONFIG !== 'undefined' && CONFIG.OBJEKTE) ? CONFIG.OBJEKTE : [];
+    return names.map(function (n, i) {
+      return { id: 'cfg-s' + i, name: n, sortierung: 100, aktiv: true };
+    });
+  }
+
+  function defaultPersonal() {
+    var keys = (typeof CONFIG !== 'undefined' && CONFIG.KUERZEL) ? CONFIG.KUERZEL : [];
+    return keys.map(function (k, i) {
+      return { id: 'cfg-p' + i, kuerzel: k, sortierung: 100, aktiv: true };
+    });
+  }
+
+  async function remoteList(table, orderCol) {
+    if (!sbAnon) return null;
+    try {
+      var res = await sbAnon.from(table).select('*')
+        .order('sortierung', { ascending: true })
+        .order(orderCol, { ascending: true });
+      if (res.error) throw res.error;
+      return res.data || [];
+    } catch (e) { return null; }
+  }
+
+  async function listStandorte(opts) {
+    var all = !!(opts && opts.all);
+    var list = await remoteList('standorte', 'name');
+    if (list) write(KEY.standorte, list);
+    else list = read(KEY.standorte, null);
+    if (!list) list = defaultStandorte();
+    var out = list.filter(function (s) { return s && (all || s.aktiv !== false); });
+    out.sort(byOrder);
+    return out;
+  }
+
+  async function listPersonal(opts) {
+    var all = !!(opts && opts.all);
+    var list = await remoteList('personal', 'kuerzel');
+    if (list) write(KEY.personal, list);
+    else list = read(KEY.personal, null);
+    if (!list) list = defaultPersonal();
+    var out = list.filter(function (p) { return p && (all || p.aktiv !== false); });
+    out.sort(byOrder);
+    return out;
+  }
+
+  function demoList(key, def) {
+    var list = read(key, null);
+    if (!list) { list = def(); write(key, list); }
+    return list;
+  }
+
+  function nameTaken(list, key, value, exceptId) {
+    var v = String(value).trim().toLowerCase();
+    return list.some(function (it) {
+      return it.id !== exceptId && String(it[key] || '').trim().toLowerCase() === v;
+    });
+  }
+
+  async function createStandort(name) {
+    name = String(name || '').trim();
+    if (!name) throw new Error(msg('err.nameEmpty'));
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('standorte').insert({ name: name }).select().single();
+      if (res.error) throw res.error;
+      var rec = res.data;
+      var l = read(KEY.standorte, null) || defaultStandorte();
+      l.push(rec);
+      write(KEY.standorte, l);
+      return rec;
+    }
+    var list = demoList(KEY.standorte, defaultStandorte);
+    if (nameTaken(list, 'name', name)) throw new Error(msg('err.exists'));
+    var neu = { id: uuid(), name: name, sortierung: 100, aktiv: true };
+    list.push(neu);
+    write(KEY.standorte, list);
+    return neu;
+  }
+
+  async function updateStandort(id, patch) {
+    patch = patch || {};
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('standorte').update(clean(patch)).eq('id', id).select().single();
+      if (res.error) throw res.error;
+      var l = read(KEY.standorte, null) || [];
+      var i = l.findIndex(function (s) { return s.id === id; });
+      if (i >= 0) l[i] = Object.assign({}, l[i], patch);
+      write(KEY.standorte, l);
+      return res.data;
+    }
+    var list = demoList(KEY.standorte, defaultStandorte);
+    var j = list.findIndex(function (s) { return s.id === id; });
+    if (j < 0) throw new Error(msg('err.notFound'));
+    if (patch.name != null && nameTaken(list, 'name', patch.name, id)) throw new Error(msg('err.exists'));
+    list[j] = Object.assign({}, list[j], clean(patch));
+    write(KEY.standorte, list);
+    return list[j];
+  }
+
+  async function deleteStandort(id) {
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('standorte').delete().eq('id', id);
+      if (res.error) throw res.error;
+      var l = read(KEY.standorte, null) || [];
+      write(KEY.standorte, l.filter(function (s) { return s.id !== id; }));
+      return;
+    }
+    var list = demoList(KEY.standorte, defaultStandorte);
+    write(KEY.standorte, list.filter(function (s) { return s.id !== id; }));
+  }
+
+  async function createPersonal(kuerzel) {
+    kuerzel = String(kuerzel || '').trim();
+    if (!kuerzel) throw new Error(msg('err.kuerzelEmpty'));
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('personal').insert({ kuerzel: kuerzel }).select().single();
+      if (res.error) throw res.error;
+      var rec = res.data;
+      var l = read(KEY.personal, null) || defaultPersonal();
+      l.push(rec);
+      write(KEY.personal, l);
+      return rec;
+    }
+    var list = demoList(KEY.personal, defaultPersonal);
+    if (nameTaken(list, 'kuerzel', kuerzel)) throw new Error(msg('err.exists'));
+    var neu = { id: uuid(), kuerzel: kuerzel, sortierung: 100, aktiv: true };
+    list.push(neu);
+    write(KEY.personal, list);
+    return neu;
+  }
+
+  async function updatePersonal(id, patch) {
+    patch = patch || {};
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('personal').update(clean(patch)).eq('id', id).select().single();
+      if (res.error) throw res.error;
+      var l = read(KEY.personal, null) || [];
+      var i = l.findIndex(function (p) { return p.id === id; });
+      if (i >= 0) l[i] = Object.assign({}, l[i], patch);
+      write(KEY.personal, l);
+      return res.data;
+    }
+    var list = demoList(KEY.personal, defaultPersonal);
+    var j = list.findIndex(function (p) { return p.id === id; });
+    if (j < 0) throw new Error(msg('err.notFound'));
+    if (patch.kuerzel != null && nameTaken(list, 'kuerzel', patch.kuerzel, id)) throw new Error(msg('err.exists'));
+    list[j] = Object.assign({}, list[j], clean(patch));
+    write(KEY.personal, list);
+    return list[j];
+  }
+
+  async function deletePersonal(id) {
+    if (mode === 'supabase') {
+      if (!sb) throw new Error(msg('err.notAllowed'));
+      var res = await sb.from('personal').delete().eq('id', id);
+      if (res.error) throw res.error;
+      var l = read(KEY.personal, null) || [];
+      write(KEY.personal, l.filter(function (p) { return p.id !== id; }));
+      return;
+    }
+    var list = demoList(KEY.personal, defaultPersonal);
+    write(KEY.personal, list.filter(function (p) { return p.id !== id; }));
+  }
+
+  /* ---------------------------------------------------------------- Foto */
+
+  function blobToDataUrl(blob) {
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onload = function () { resolve(String(fr.result)); };
+      fr.onerror = function () { reject(fr.error || new Error('Bild konnte nicht gelesen werden')); };
+      fr.readAsDataURL(blob);
+    });
+  }
+
+  /* Lädt ein bereits verkleinertes JPEG in den Bucket "fotos".
+     Demo-Modus: Data-URL zurückgeben (kein Upload). */
+  async function uploadFoto(file, kuerzel, id) {
+    if (!file) throw new Error('kein Bild');
+    if (mode !== 'supabase' || !sbAnon) return blobToDataUrl(file);
+
+    var safe = String(kuerzel || 'x').replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 32) || 'x';
+    var rnd = Math.random().toString(36).slice(2, 8);
+    var path = safe + '/' + String(id || uuid()) + '-' + rnd + '.jpg';
+
+    var up = await sbAnon.storage.from('fotos').upload(path, file, {
+      contentType: file.type || 'image/jpeg',
+      cacheControl: '3600',
+      upsert: false
+    });
+    if (up.error) throw up.error;
+
+    var pub = sbAnon.storage.from('fotos').getPublicUrl(path);
+    return (pub && pub.data && pub.data.publicUrl) ? pub.data.publicUrl : null;
+  }
+
+  /* ------------------------------------------------------------------ Anmeldung */
+
+  async function signIn(email, password) {
+    if (!sb) throw new Error('Supabase ist nicht konfiguriert oder gerade nicht erreichbar.');
+    var res = await sb.auth.signInWithPassword({ email: email, password: password });
+    if (res.error) throw res.error;
+    return res.data;
+  }
+
+  async function signOut() {
+    if (mode === 'demo') { write(KEY.demoAuth, false); return; }
+    if (sb) await sb.auth.signOut();
+  }
+
+  async function getSession() {
+    if (mode === 'demo') return read(KEY.demoAuth, false) ? { demo: true } : null;
+    if (!sb) return null;
+    var res = await sb.auth.getSession();
+    return res && res.data ? res.data.session : null;
+  }
+
+  function demoLogin(ok) { write(KEY.demoAuth, !!ok); }
+
+  /* ------------------------------------------------------------------ Kürzel */
+
+  function getKuerzel() { return read(KEY.kuerzel, '') || ''; }
+  function setKuerzel(k) { write(KEY.kuerzel, String(k || '').trim()); }
+
+  return {
+    init: init,
+    getMode: function () { return mode; },
+    insertZeit: insertZeit,
+    updateZeit: updateZeit,
+    getOffene: getOffene,
+    listZeiten: listZeiten,
+    listCached: listCached,
+    flush: flush,
+    queueLength: function () { return queue().length; },
+    listStandorte: listStandorte,
+    listPersonal: listPersonal,
+    createStandort: createStandort,
+    updateStandort: updateStandort,
+    deleteStandort: deleteStandort,
+    createPersonal: createPersonal,
+    updatePersonal: updatePersonal,
+    deletePersonal: deletePersonal,
+    uploadFoto: uploadFoto,
+    signIn: signIn,
+    signOut: signOut,
+    getSession: getSession,
+    demoLogin: demoLogin,
+    getKuerzel: getKuerzel,
+    setKuerzel: setKuerzel,
+    util: {
+      parts: parts,
+      monthRange: monthRange,
+      zonedToUtc: zonedToUtc,
+      msToHms: msToHms,
+      hours: hours,
+      fmtHours: fmtHours,
+      fmtTime: fmtTime,
+      fmtDate: fmtDate,
+      nowParts: nowParts
+    }
+  };
+})();
+
+</script>
+<script>
+/* app.js */
+/* app.js – Stempeluhr (index.html) */
+'use strict';
+
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var U = Store.util;
+
+  var state = {
+    kuerzel: '',
+    offen: null,       // laufender Einsatz
+    pendingEnde: null, // Zeitpunkt, zu dem "Fertig" gedrückt wurde
+    ticker: null,
+    standorte: [],
+    personal: [],
+    fotoBlob: null,
+    fotoUrl: null,
+    saving: false
+  };
+
+  document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('pz-langchange', onLangChange);
+
+  async function boot() {
+    try { await Store.init(); } catch (e) { /* Demo-Modus läuft trotzdem */ }
+    await loadLists();
+    buildKuerzelGrid();
+    fillObjekte();
+
+    state.kuerzel = Store.getKuerzel();
+    $('chip-kuerzel').textContent = state.kuerzel || '–';
+
+    modeHinweis();
+
+    state.offen = Store.getOffene(state.kuerzel);
+    if (!state.kuerzel) showKuerzel(); else showMain();
+
+    render();
+    renderZuletzt();
+    renderMine();
+    startTicker();
+
+    window.addEventListener('online', async function () {
+      var n = await Store.flush();
+      if (n > 0) hint(t('hint.sent', n));
+    });
+
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      Promise.reject(new Error('bundle')).catch(function () { /* optional */ });
+    }
+  }
+
+  /* Listen aus Supabase (nur aktive) bzw. CONFIG als Rückfall. */
+  async function loadLists() {
+    try { state.standorte = await Store.listStandorte(); } catch (e) { state.standorte = []; }
+    try { state.personal = await Store.listPersonal(); } catch (e) { state.personal = []; }
+  }
+
+  function personalNames() {
+    if (state.personal && state.personal.length) {
+      return state.personal.map(function (p) { return p.kuerzel; });
+    }
+    return (typeof CONFIG !== 'undefined' && CONFIG.KUERZEL) ? CONFIG.KUERZEL : [];
+  }
+
+  function objektNames() {
+    if (state.standorte && state.standorte.length) {
+      return state.standorte.map(function (s) { return s.name; });
+    }
+    return (typeof CONFIG !== 'undefined' && CONFIG.OBJEKTE) ? CONFIG.OBJEKTE : [];
+  }
+
+  /* ------------------------------------------------------------- Navigation */
+
+  function showKuerzel() {
+    $('screen-kuerzel').hidden = false;
+    $('screen-main').hidden = true;
+  }
+
+  function showMain() {
+    $('screen-kuerzel').hidden = true;
+    $('screen-main').hidden = false;
+  }
+
+  function modeHinweis() {
+    if (Store.getMode() === 'demo') {
+      hint(t('hint.demo'), true);
+    } else if (Store.queueLength() > 0) {
+      hint(t('hint.queue', Store.queueLength()), true);
+    }
+  }
+
+  function hint(text, keep) {
+    var el = $('hint');
+    if (!text) { el.hidden = true; el.textContent = ''; return; }
+    el.textContent = text;
+    el.hidden = false;
+    if (!keep) {
+      clearTimeout(hint._t);
+      hint._t = setTimeout(function () { el.hidden = true; }, 6000);
+    }
+  }
+
+  /* ------------------------------------------------------------- Kürzel */
+
+  function buildKuerzelGrid() {
+    var grid = $('kgrid');
+    if (!grid) return;
+    grid.textContent = '';
+    (personalNames()).forEach(function (k) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'kbtn';
+      b.textContent = k;
+      b.addEventListener('click', function () {
+        $('inp-kuerzel').value = k;
+        saveKuerzel(k);
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  function saveKuerzel(k) {
+    k = String(k || '').trim();
+    if (!k) { hint(t('hint.kuerzelNeeded')); return; }
+    state.kuerzel = k;
+    Store.setKuerzel(k);
+    $('chip-kuerzel').textContent = k;
+    state.offen = Store.getOffene(k);
+    showMain();
+    render();
+    renderZuletzt();
+    renderMine();
+    hint(t('hint.kuerzelSaved', k));
+  }
+
+  function fillObjekte() {
+    var sel = $('sel-objekt');
+    if (!sel) return;
+    var keep = sel.value;
+    var names = objektNames();
+    sel.textContent = '';
+    names.forEach(function (o) {
+      var opt = document.createElement('option');
+      opt.value = o;
+      opt.textContent = o;
+      sel.appendChild(opt);
+    });
+    var last = keep || localStorage.getItem('pz_objekt');
+    if (last && names.indexOf(last) >= 0) sel.value = last;
+  }
+
+  /* ------------------------------------------------------------- Stempeluhr */
+
+  function setStamp(art) {
+    var b = $('btn-stamp');
+    if (art === 'fertig') {
+      b.textContent = t('clock.stop');
+      b.className = 'stamp stamp-stop';
+    } else {
+      b.textContent = t('clock.start');
+      b.className = 'stamp stamp-start';
+    }
+  }
+
+  function render() {
+    var o = state.offen;
+    var sel = $('sel-objekt');
+
+    if (o) {
+      sel.value = o.objekt;
+      sel.disabled = true;
+      $('status').textContent = t('clock.running', o.kuerzel, o.objekt);
+      $('seit').textContent = t('clock.arrived', U.fmtTime(o.start_ts));
+      setStamp('fertig');
+      if (!state.pendingEnde) {
+        $('timer').textContent = U.msToHms(Date.now() - Date.parse(o.start_ts));
+      }
+      $('btn-stamp').disabled = !!state.pendingEnde;
+    } else {
+      sel.disabled = false;
+      $('status').textContent = t('clock.ready');
+      $('timer').textContent = '00:00:00';
+      $('seit').textContent = '';
+      setStamp('ankommen');
+      $('btn-stamp').disabled = false;
+    }
+  }
+
+  function startTicker() {
+    clearInterval(state.ticker);
+    state.ticker = setInterval(function () {
+      if (state.offen && !state.pendingEnde) {
+        $('timer').textContent = U.msToHms(Date.now() - Date.parse(state.offen.start_ts));
+      }
+    }, 1000);
+  }
+
+  async function onStamp() {
+    if (state.pendingEnde) return;           // Abschluss-Panel ist offen
+    if (state.offen) return openEndePanel();
+    if (!state.kuerzel) return showKuerzel();
+
+    var objekt = $('sel-objekt').value;
+    var rec = await Store.insertZeit({
+      kuerzel: state.kuerzel,
+      objekt: objekt,
+      start_ts: new Date().toISOString(),
+      ende_ts: null,
+      nachgetragen: false
+    });
+    localStorage.setItem('pz_objekt', objekt);
+    state.offen = rec;
+    render();
+    renderZuletzt();
+    renderMine();
+    if (rec._pending) {
+      hint(t('hint.offline'), true);
+    } else {
+      hint(t('hint.arrived', U.fmtTime(rec.start_ts), objekt));
+    }
+  }
+
+  /* ------------------------------------------------------------- Abschluss */
+
+  function endeInfoText() {
+    var o = state.offen;
+    if (!o || !state.pendingEnde) return '';
+    var dauer = Date.parse(state.pendingEnde) - Date.parse(o.start_ts);
+    return t('ende.info', o.objekt, U.fmtTime(o.start_ts), U.fmtTime(state.pendingEnde), U.fmtHours(dauer));
+  }
+
+  function openEndePanel() {
+    var o = state.offen;
+    if (!o) return;
+    state.pendingEnde = new Date().toISOString();
+    $('ende-info').textContent = endeInfoText();
+    $('inp-notiz').value = '';
+    resetFoto();
+    $('ende-panel').hidden = false;
+    render();
+    $('inp-notiz').focus();
+  }
+
+  function cancelEnde() {
+    state.pendingEnde = null;
+    $('ende-panel').hidden = true;
+    resetFoto();
+    render();
+  }
+
+  /* Bild vor dem Upload verkleinern: längste Kante max. edge, JPEG. */
+  function shrinkImage(file, edge, quality) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        try {
+          var w = img.naturalWidth || img.width;
+          var h = img.naturalHeight || img.height;
+          var scale = Math.min(1, edge / Math.max(w, h));
+          var cw = Math.max(1, Math.round(w * scale));
+          var ch = Math.max(1, Math.round(h * scale));
+          var c = document.createElement('canvas');
+          c.width = cw;
+          c.height = ch;
+          var g = c.getContext('2d');
+          g.fillStyle = '#ffffff';
+          g.fillRect(0, 0, cw, ch);
+          g.drawImage(img, 0, 0, cw, ch);
+          URL.revokeObjectURL(url);
+          c.toBlob(function (blob) {
+            if (blob) resolve(blob);
+            else reject(new Error('canvas'));
+          }, 'image/jpeg', quality);
+        } catch (e) {
+          URL.revokeObjectURL(url);
+          reject(e);
+        }
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        reject(new Error('image'));
+      };
+      img.src = url;
+    });
+  }
+
+  async function onFotoChosen(ev) {
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    try {
+      var blob = await shrinkImage(f, 1600, 0.8);
+      state.fotoBlob = blob;
+      if (state.fotoUrl) URL.revokeObjectURL(state.fotoUrl);
+      state.fotoUrl = URL.createObjectURL(blob);
+      $('foto-img').src = state.fotoUrl;
+      $('foto-preview').hidden = false;
+      $('btn-foto-add').hidden = true;
+    } catch (e) {
+      hint(t('hint.fotoRead'));
+    }
+    ev.target.value = '';
+  }
+
+  function resetFoto() {
+    state.fotoBlob = null;
+    if (state.fotoUrl) { URL.revokeObjectURL(state.fotoUrl); state.fotoUrl = null; }
+    $('foto-img').removeAttribute('src');
+    $('foto-preview').hidden = true;
+    $('btn-foto-add').hidden = false;
+    $('inp-foto').value = '';
+  }
+
+  async function saveEnde() {
+    var o = state.offen;
+    if (!o || !state.pendingEnde || state.saving) return;
+    state.saving = true;
+
+    var ende = state.pendingEnde;
+    var notiz = $('inp-notiz').value.trim();
+    var dauer = Date.parse(ende) - Date.parse(o.start_ts);
+    var fotoUrl = null;
+    var fotoFailed = false;
+
+    $('btn-ende-save').disabled = true;
+    $('btn-ende-save').textContent = t('ende.saving');
+
+    if (state.fotoBlob) {
+      try {
+        fotoUrl = await Store.uploadFoto(state.fotoBlob, o.kuerzel, o.id);
+      } catch (e) {
+        fotoFailed = true;
+      }
+    }
+
+    var patch = { ende_ts: ende, notiz: notiz || null };
+    if (fotoUrl) patch.foto_url = fotoUrl;
+
+    var res = null;
+    try {
+      res = await Store.updateZeit(o.id, patch);
+    } catch (e) {
+      state.saving = false;
+      $('btn-ende-save').disabled = false;
+      $('btn-ende-save').textContent = t('ende.save');
+      hint(e && e.message ? e.message : t('err.notFound'));
+      return;
+    }
+
+    state.offen = null;
+    state.pendingEnde = null;
+    state.saving = false;
+    $('ende-panel').hidden = true;
+    $('btn-ende-save').disabled = false;
+    $('btn-ende-save').textContent = t('ende.save');
+    resetFoto();
+    render();
+    renderZuletzt();
+    renderMine();
+
+    if (fotoFailed) {
+      hint(t('hint.fotoFailed'), true);
+    } else if (res && res._pending) {
+      hint(t('hint.offline'), true);
+    } else {
+      hint(t('hint.saved', U.fmtHours(dauer), o.objekt));
+    }
+  }
+
+  /* ------------------------------------------------------------- Nachtrag */
+
+  function toggleNachtrag() {
+    var f = $('form-nachtrag');
+    f.hidden = !f.hidden;
+    $('btn-nachtrag-toggle').setAttribute('aria-expanded', String(!f.hidden));
+    if (!f.hidden) {
+      var p = U.nowParts();
+      $('n-datum').value = p.y + '-' + String(p.m).padStart(2, '0') + '-' + String(p.d).padStart(2, '0');
+    }
+  }
+
+  async function saveNachtrag(ev) {
+    ev.preventDefault();
+    var datum = $('n-datum').value;
+    var von = $('n-von').value;
+    var bis = $('n-bis').value;
+    if (!datum || !von || !bis) { hint(t('hint.nachtragFields')); return; }
+
+    var d = datum.split('-').map(Number);
+    var v = von.split(':').map(Number);
+    var b = bis.split(':').map(Number);
+    if (b[0] * 60 + b[1] <= v[0] * 60 + v[1]) {
+      hint(t('hint.nachtragOrder'));
+      return;
+    }
+
+    var start = U.zonedToUtc(d[0], d[1], d[2], v[0], v[1]);
+    var ende = U.zonedToUtc(d[0], d[1], d[2], b[0], b[1]);
+
+    var rec = await Store.insertZeit({
+      kuerzel: state.kuerzel,
+      objekt: $('sel-objekt').value,
+      start_ts: new Date(start).toISOString(),
+      ende_ts: new Date(ende).toISOString(),
+      notiz: $('n-notiz').value.trim() || null,
+      nachgetragen: true
+    });
+
+    $('form-nachtrag').reset();
+    $('form-nachtrag').hidden = true;
+    $('btn-nachtrag-toggle').setAttribute('aria-expanded', 'false');
+    renderZuletzt();
+    renderMine();
+    hint(rec._pending
+      ? t('hint.nachtragLocal')
+      : t('hint.nachtragSaved', U.fmtHours(ende - start)));
+  }
+
+  /* ------------------------------------------------------------- Zuletzt */
+
+  function renderZuletzt() {
+    var ul = $('list-zuletzt');
+    if (!ul) return;
+    ul.textContent = '';
+    var p = U.nowParts();
+    var r = U.monthRange(p.y, p.m);
+    var arr = Store.listCached({ fromMs: r.fromMs, toMs: r.toMs })
+      .filter(function (z) { return z.kuerzel === state.kuerzel; })
+      .slice(-6)
+      .reverse();
+
+    if (!arr.length) {
+      var le = document.createElement('li');
+      le.className = 'empty';
+      le.textContent = t('zuletzt.empty');
+      ul.appendChild(le);
+      return;
+    }
+
+    arr.forEach(function (z) {
+      var li = document.createElement('li');
+      li.className = 'entry';
+
+      var main = document.createElement('div');
+      main.className = 'entry-main';
+      var t1 = document.createElement('strong');
+      t1.textContent = U.fmtDate(z.start_ts) + ' · ' + z.objekt;
+      var t2 = document.createElement('span');
+      t2.className = 'muted small';
+      var txt = U.fmtTime(z.start_ts) + '–' + (z.ende_ts ? U.fmtTime(z.ende_ts) : t('zuletzt.running'));
+      if (z.ende_ts) txt += ' · ' + U.fmtHours(Date.parse(z.ende_ts) - Date.parse(z.start_ts)) + ' h';
+      t2.textContent = txt;
+      main.appendChild(t1);
+      main.appendChild(t2);
+
+      var side = document.createElement('div');
+      side.className = 'entry-side';
+      if (z.nachgetragen) side.appendChild(badge(t('badge.nachtrag'), 'badge-nachtrag'));
+      if (z._pending) side.appendChild(badge(t('badge.pending'), 'badge-pending'));
+
+      li.appendChild(main);
+      li.appendChild(side);
+      ul.appendChild(li);
+    });
+  }
+
+  /* --------------------------------------------------- Meine Zeiten (Cache) */
+
+  function renderMine() {
+    var sum = $('mine-sum');
+    if (!sum) return;
+    var p = U.nowParts();
+    var r = U.monthRange(p.y, p.m);
+    var arr = Store.listCached({ fromMs: r.fromMs, toMs: r.toMs })
+      .filter(function (z) { return z.kuerzel === state.kuerzel; });
+    var total = 0;
+    arr.forEach(function (z) {
+      if (!z.ende_ts) return;
+      total += Date.parse(z.ende_ts) - Date.parse(z.start_ts);
+    });
+    sum.textContent = t(arr.length === 1 ? 'mine.summaryOne' : 'mine.summary', arr.length, U.fmtHours(total));
+  }
+
+  function badge(text, cls) {
+    var s = document.createElement('span');
+    s.className = 'badge ' + cls;
+    s.textContent = text;
+    return s;
+  }
+
+  /* ------------------------------------------------------------- Sprache */
+
+  function onLangChange() {
+    /* Statische Texte hat i18n.js schon gesetzt; hier die dynamischen. */
+    buildKuerzelGrid();
+    fillObjekte();
+    render();
+    renderZuletzt();
+    renderMine();
+    if (state.pendingEnde) $('ende-info').textContent = endeInfoText();
+  }
+
+  /* ------------------------------------------------------------- Events */
+
+  $('btn-kuerzel').addEventListener('click', function () {
+    $('inp-kuerzel').value = state.kuerzel || '';
+    showKuerzel();
+  });
+  $('btn-kuerzel-save').addEventListener('click', function () { saveKuerzel($('inp-kuerzel').value); });
+  $('inp-kuerzel').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); saveKuerzel($('inp-kuerzel').value); }
+  });
+  $('btn-stamp').addEventListener('click', onStamp);
+  $('btn-ende-save').addEventListener('click', saveEnde);
+  $('btn-ende-cancel').addEventListener('click', cancelEnde);
+  $('btn-foto-add').addEventListener('click', function () { $('inp-foto').click(); });
+  $('inp-foto').addEventListener('change', onFotoChosen);
+  $('btn-foto-remove').addEventListener('click', resetFoto);
+  $('btn-nachtrag-toggle').addEventListener('click', toggleNachtrag);
+  $('form-nachtrag').addEventListener('submit', saveNachtrag);
+  $('sel-objekt').addEventListener('change', function () {
+    localStorage.setItem('pz_objekt', $('sel-objekt').value);
+  });
+})();
+
+</script>
+</body>
+</html>
