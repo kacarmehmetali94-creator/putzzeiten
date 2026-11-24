@@ -489,6 +489,20 @@ tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--danger); }
 }
 .add-form input { flex: 1 1 160px; min-height: var(--tap); }
 
+/* Nachtrag durch den Admin */
+.add-nachtrag {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.add-nachtrag .field { margin-bottom: 0; flex: 0 1 150px; min-width: 130px; }
+.add-nachtrag .field.grow { flex: 1 1 220px; }
+.add-nachtrag input, .add-nachtrag select { min-height: var(--tap); }
+.add-nachtrag .btn { min-height: var(--tap); }
+.row-action { text-align: right; }
+.row-action .btn { padding: 2px 10px; font-size: 16px; line-height: 1.2; }
+
 .admin-list { margin-top: 4px; }
 .admin-row {
   display: flex;
@@ -597,6 +611,39 @@ tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--danger); }
 
       <div class="sums" id="sums"></div>
 
+      <div class="card">
+        <h2 data-i18n="add.title">Eintrag nachtragen</h2>
+        <p class="muted small" data-i18n="add.hint">Für Einsätze, bei denen das Stempeln vergessen wurde. Wird als „nachtragen" markiert.</p>
+        <form id="form-add" class="add-nachtrag">
+          <label class="field" for="inp-add-datum">
+            <span data-i18n="add.date">Datum</span>
+            <input type="date" id="inp-add-datum" required>
+          </label>
+          <label class="field" for="sel-add-kuerzel">
+            <span data-i18n="add.kuerzel">Kürzel</span>
+            <select id="sel-add-kuerzel" required></select>
+          </label>
+          <label class="field" for="sel-add-objekt">
+            <span data-i18n="add.objekt">Standort</span>
+            <select id="sel-add-objekt" required></select>
+          </label>
+          <label class="field" for="inp-add-von">
+            <span data-i18n="add.from">Von</span>
+            <input type="time" id="inp-add-von" required>
+          </label>
+          <label class="field" for="inp-add-bis">
+            <span data-i18n="add.to">Bis</span>
+            <input type="time" id="inp-add-bis" required>
+          </label>
+          <label class="field grow" for="inp-add-notiz">
+            <span data-i18n="add.note">Notiz (optional)</span>
+            <input type="text" id="inp-add-notiz" maxlength="300" autocomplete="off">
+          </label>
+          <button class="btn btn-primary" type="submit" data-i18n="add.submit">Eintragen</button>
+        </form>
+        <p class="muted small" id="add-hint" role="status"></p>
+      </div>
+
       <div class="card notes-card">
         <h2 data-i18n="notes.title">Notizen</h2>
         <ul class="list notes-list" id="notes-list"></ul>
@@ -614,6 +661,7 @@ tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--danger); }
               <th scope="col" style="text-align:right" data-i18n="table.hours">Stunden</th>
               <th scope="col" data-i18n="table.note">Notiz</th>
               <th scope="col" data-i18n="table.flags">Hinweise</th>
+              <th scope="col" aria-label="Aktion"></th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -770,6 +818,7 @@ var I18N = {
     'err.kuerzelEmpty': 'Bitte ein Kürzel eingeben.',
     'err.exists': 'Gibt es schon.',
     'err.notFound': 'Eintrag nicht gefunden.',
+    'err.fields': 'Bitte Kürzel, Standort und Datum angeben.',
     'err.notAllowed': 'Keine Berechtigung – bitte im Admin anmelden.',
 
     /* ---------------------------------------------------------- Auswertung */
@@ -812,6 +861,23 @@ var I18N = {
     'table.flags': 'Hinweise',
     'table.empty': 'Keine Einträge für diese Auswahl.',
     'table.running': 'läuft',
+    'table.delete': 'Eintrag löschen',
+    'table.confirmDelete': 'Diesen Eintrag wirklich löschen?',
+    'table.deleted': 'Eintrag gelöscht.',
+
+    'add.title': 'Eintrag nachtragen',
+    'add.hint': 'Für Einsätze, bei denen das Stempeln vergessen wurde. Wird als „nachtragen“ markiert.',
+    'add.date': 'Datum',
+    'add.kuerzel': 'Kürzel',
+    'add.objekt': 'Standort',
+    'add.from': 'Von',
+    'add.to': 'Bis',
+    'add.note': 'Notiz (optional)',
+    'add.submit': 'Eintragen',
+    'add.choose': '– bitte wählen –',
+    'add.fields': 'Bitte Datum, Kürzel, Standort, Von und Bis ausfüllen.',
+    'add.order': '„Bis“ muss nach „Von“ liegen.',
+    'add.saved': 'Eingetragen: {0} Stunden.',
 
     'flags.added': 'nachtragen',
     'flags.unusual': 'auffällig',
@@ -941,6 +1007,7 @@ var I18N = {
     'err.kuerzelEmpty': 'Please enter initials.',
     'err.exists': 'Already exists.',
     'err.notFound': 'Entry not found.',
+    'err.fields': 'Please provide initials, location and date.',
     'err.notAllowed': 'Not allowed – please sign in as admin.',
 
     'mode.demo': 'Demo mode',
@@ -982,6 +1049,23 @@ var I18N = {
     'table.flags': 'Flags',
     'table.empty': 'No entries for this selection.',
     'table.running': 'running',
+    'table.delete': 'Delete entry',
+    'table.confirmDelete': 'Delete this entry?',
+    'table.deleted': 'Entry deleted.',
+
+    'add.title': 'Add a past entry',
+    'add.hint': 'For shifts where the stamp was forgotten. Marked as “added”.',
+    'add.date': 'Date',
+    'add.kuerzel': 'Initials',
+    'add.objekt': 'Location',
+    'add.from': 'From',
+    'add.to': 'To',
+    'add.note': 'Note (optional)',
+    'add.submit': 'Add entry',
+    'add.choose': '– select –',
+    'add.fields': 'Please fill in date, initials, location, from and to.',
+    'add.order': '“To” must be after “From”.',
+    'add.saved': 'Added: {0} hours.',
 
     'flags.added': 'added',
     'flags.unusual': 'unusual',
@@ -1215,6 +1299,11 @@ var Store = (function () {
     arr[i] = Object.assign({}, arr[i], patch);
     saveCache(arr);
     return arr[i];
+  }
+
+  function cacheDrop(id) {
+    var arr = cache().filter(function (z) { return z.id !== id; });
+    saveCache(arr);
   }
 
   /* "_pending" (nur lokal, wartet auf Übertragung) aus dem Cache entfernen. */
@@ -1485,6 +1574,37 @@ var Store = (function () {
       queuePush({ type: 'insert', rec: rec });
       return rec;
     }
+  }
+
+  /* Eintrag durch den Admin anlegen (Nachtrag). Läuft über den angemeldeten
+     Client, weil anon nur offene Einsätze (ende_ts null) anlegen darf. */
+  async function insertZeitAdmin(data) {
+    var rec = {
+      id: data.id || uuid(),
+      kuerzel: String(data.kuerzel || '').trim(),
+      objekt: String(data.objekt || '').trim(),
+      start_ts: data.start_ts,
+      ende_ts: data.ende_ts || null,
+      notiz: data.notiz || null,
+      nachgetragen: true,
+      created_at: new Date().toISOString()
+    };
+    if (!rec.kuerzel || !rec.objekt || !rec.start_ts) throw new Error(msg('err.fields'));
+    if (mode === 'demo') { cachePut(rec); return rec; }
+    var res = await sb.from('zeiten').insert(clean(rec));
+    if (res.error) throw res.error;
+    cachePut(rec);
+    return rec;
+  }
+
+  /* Eintrag durch den Admin löschen (Fehleingabe). */
+  async function deleteZeitAdmin(id) {
+    if (mode !== 'demo') {
+      var res = await sb.from('zeiten').delete().eq('id', id);
+      if (res.error) throw res.error;
+    }
+    cacheDrop(id);
+    return true;
   }
 
   /* Eintrag ändern (Fertig-Stempeln, Notiz, Foto). */
@@ -1816,6 +1936,8 @@ var Store = (function () {
     updatePersonal: updatePersonal,
     deletePersonal: deletePersonal,
     uploadFoto: uploadFoto,
+    insertZeitAdmin: insertZeitAdmin,
+    deleteZeitAdmin: deleteZeitAdmin,
     signIn: signIn,
     signOut: signOut,
     getSession: getSession,
@@ -1952,6 +2074,12 @@ var Store = (function () {
     var r = U.monthRange(teile[0], teile[1]);
 
     $('status-line').textContent = t('status.loading');
+    if (!state.personal.length) {
+      try { state.personal = await Store.listPersonal({ all: true }); } catch (e) { /* egal */ }
+    }
+    if (!state.standorte.length) {
+      try { state.standorte = await Store.listStandorte({ all: true }); } catch (e) { /* egal */ }
+    }
     var res = await Store.listZeiten({ from: r.from, to: r.to });
     state.offline = !!res.offline;
     state.rows = res.list.map(function (z) {
@@ -1962,8 +2090,98 @@ var Store = (function () {
 
     updateStatus();
     buildFilter();
+    fillAddForm();
     render();
     return;
+  }
+
+  /* Auswahllisten + Datum im Nachtrag-Formular füllen. */
+  function fillAddForm() {
+    var kuSel = $('sel-add-kuerzel');
+    var obSel = $('sel-add-objekt');
+    if (!kuSel || !obSel) return;
+
+    var kuerzelSet = {};
+    var objektSet = {};
+    (state.personal || []).forEach(function (p) { if (p.aktiv !== false) kuerzelSet[p.kuerzel] = 1; });
+    (state.standorte || []).forEach(function (s) { if (s.aktiv !== false) objektSet[s.name] = 1; });
+    state.rows.forEach(function (r) { kuerzelSet[r.z.kuerzel] = 1; objektSet[r.z.objekt] = 1; });
+    /* CONFIG nur als Rückfallebene, wenn aus der Datenbank nichts kam */
+    if (!Object.keys(kuerzelSet).length) {
+      (typeof CONFIG !== 'undefined' && CONFIG.KUERZEL ? CONFIG.KUERZEL : []).forEach(function (k) { kuerzelSet[k] = 1; });
+    }
+    if (!Object.keys(objektSet).length) {
+      (typeof CONFIG !== 'undefined' && CONFIG.OBJEKTE ? CONFIG.OBJEKTE : []).forEach(function (o) { objektSet[o] = 1; });
+    }
+
+    var kuKeep = kuSel.value;
+    var obKeep = obSel.value;
+    fillSelect(kuSel, Object.keys(kuerzelSet).sort(), t('add.choose'), kuKeep);
+    fillSelect(obSel, Object.keys(objektSet).sort(), t('add.choose'), obKeep);
+    if (kuSel.options.length > 1 && !kuSel.value) kuSel.selectedIndex = 1;
+    if (obSel.options.length > 1 && !obSel.value) obSel.selectedIndex = 1;
+
+    if (!$('inp-add-datum').value) {
+      var p = U.nowParts();
+      $('inp-add-datum').value = p.y + '-' + String(p.m).padStart(2, '0') + '-' + String(p.d).padStart(2, '0');
+    }
+  }
+
+  async function onAdd(ev) {
+    ev.preventDefault();
+    $('add-hint').textContent = '';
+
+    var datum = $('inp-add-datum').value;
+    var von = $('inp-add-von').value;
+    var bis = $('inp-add-bis').value;
+    var kuerzel = $('sel-add-kuerzel').value;
+    var objekt = $('sel-add-objekt').value;
+
+    if (!datum || !von || !bis || !kuerzel || !objekt) {
+      $('add-hint').textContent = t('add.fields');
+      return;
+    }
+    var d = datum.split('-').map(Number);
+    var v = von.split(':').map(Number);
+    var b = bis.split(':').map(Number);
+    if (b[0] * 60 + b[1] <= v[0] * 60 + v[1]) {
+      $('add-hint').textContent = t('add.order');
+      return;
+    }
+
+    var start = U.zonedToUtc(d[0], d[1], d[2], v[0], v[1]);
+    var ende = U.zonedToUtc(d[0], d[1], d[2], b[0], b[1]);
+
+    try {
+      var rec = await Store.insertZeitAdmin({
+        kuerzel: kuerzel,
+        objekt: objekt,
+        start_ts: new Date(start).toISOString(),
+        ende_ts: new Date(ende).toISOString(),
+        notiz: $('inp-add-notiz').value.trim() || null
+      });
+      $('inp-add-notiz').value = '';
+      $('add-hint').textContent = t('add.saved', U.fmtHours(ende - start));
+      await load();
+      /* Kurz nachfassen, falls der Abruf den neuen Eintrag noch nicht liefert. */
+      if (!state.rows.some(function (r) { return r.z.id === rec.id; })) {
+        await new Promise(function (res) { setTimeout(res, 1500); });
+        await load();
+      }
+    } catch (e) {
+      $('add-hint').textContent = t('manage.error', (e && e.message) ? e.message : '?');
+    }
+  }
+
+  async function onDeleteRow(id) {
+    if (!window.confirm(t('table.confirmDelete'))) return;
+    try {
+      await Store.deleteZeitAdmin(id);
+      $('add-hint').textContent = t('table.deleted');
+      await load();
+    } catch (e) {
+      $('add-hint').textContent = t('manage.error', (e && e.message) ? e.message : '?');
+    }
   }
 
   function updateStatus() {
@@ -1984,8 +2202,12 @@ var Store = (function () {
     });
     (state.personal || []).forEach(function (p) { kuerzelSet[p.kuerzel] = 1; });
     (state.standorte || []).forEach(function (s) { objektSet[s.name] = 1; });
-    (typeof CONFIG !== 'undefined' && CONFIG.KUERZEL ? CONFIG.KUERZEL : []).forEach(function (k) { kuerzelSet[k] = 1; });
-    (typeof CONFIG !== 'undefined' && CONFIG.OBJEKTE ? CONFIG.OBJEKTE : []).forEach(function (o) { objektSet[o] = 1; });
+    if (!Object.keys(kuerzelSet).length) {
+      (typeof CONFIG !== 'undefined' && CONFIG.KUERZEL ? CONFIG.KUERZEL : []).forEach(function (k) { kuerzelSet[k] = 1; });
+    }
+    if (!Object.keys(objektSet).length) {
+      (typeof CONFIG !== 'undefined' && CONFIG.OBJEKTE ? CONFIG.OBJEKTE : []).forEach(function (o) { objektSet[o] = 1; });
+    }
 
     fillSelect(ku, Object.keys(kuerzelSet).sort(), t('filter.allKuerzel'), ku.value);
     fillSelect(ob, Object.keys(objektSet).sort(), t('filter.allObjekte'), ob.value);
@@ -2049,7 +2271,7 @@ var Store = (function () {
     if (!rows.length) {
       var tr = document.createElement('tr');
       var td = document.createElement('td');
-      td.colSpan = 8;
+      td.colSpan = 9;
       td.className = 'empty';
       td.textContent = t('table.empty');
       tr.appendChild(td);
@@ -2085,6 +2307,18 @@ var Store = (function () {
       if (z._pending) box.appendChild(badge(t('flags.pending'), 'badge-pending'));
       td.appendChild(box);
       tr.appendChild(td);
+
+      var tdDel = document.createElement('td');
+      tdDel.className = 'row-action';
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'btn btn-sm btn-ghost btn-danger-text';
+      del.textContent = '×';
+      del.title = t('table.delete');
+      del.setAttribute('aria-label', t('table.delete'));
+      del.addEventListener('click', function () { onDeleteRow(z.id); });
+      tdDel.appendChild(del);
+      tr.appendChild(tdDel);
 
       tb.appendChild(tr);
     });
@@ -2438,6 +2672,7 @@ var Store = (function () {
   $('filter-kuerzel').addEventListener('change', render);
   $('filter-objekt').addEventListener('change', render);
   $('btn-csv').addEventListener('click', exportCsv);
+  $('form-add').addEventListener('submit', onAdd);
   $('tab-report').addEventListener('click', function () { setTab('report'); });
   $('tab-manage').addEventListener('click', function () { setTab('manage'); });
   $('form-standort').addEventListener('submit', function (ev) {

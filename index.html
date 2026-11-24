@@ -492,6 +492,20 @@ tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--danger); }
 }
 .add-form input { flex: 1 1 160px; min-height: var(--tap); }
 
+/* Nachtrag durch den Admin */
+.add-nachtrag {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.add-nachtrag .field { margin-bottom: 0; flex: 0 1 150px; min-width: 130px; }
+.add-nachtrag .field.grow { flex: 1 1 220px; }
+.add-nachtrag input, .add-nachtrag select { min-height: var(--tap); }
+.add-nachtrag .btn { min-height: var(--tap); }
+.row-action { text-align: right; }
+.row-action .btn { padding: 2px 10px; font-size: 16px; line-height: 1.2; }
+
 .admin-list { margin-top: 4px; }
 .admin-row {
   display: flex;
@@ -772,6 +786,7 @@ var I18N = {
     'err.kuerzelEmpty': 'Bitte ein Kürzel eingeben.',
     'err.exists': 'Gibt es schon.',
     'err.notFound': 'Eintrag nicht gefunden.',
+    'err.fields': 'Bitte Kürzel, Standort und Datum angeben.',
     'err.notAllowed': 'Keine Berechtigung – bitte im Admin anmelden.',
 
     /* ---------------------------------------------------------- Auswertung */
@@ -814,6 +829,23 @@ var I18N = {
     'table.flags': 'Hinweise',
     'table.empty': 'Keine Einträge für diese Auswahl.',
     'table.running': 'läuft',
+    'table.delete': 'Eintrag löschen',
+    'table.confirmDelete': 'Diesen Eintrag wirklich löschen?',
+    'table.deleted': 'Eintrag gelöscht.',
+
+    'add.title': 'Eintrag nachtragen',
+    'add.hint': 'Für Einsätze, bei denen das Stempeln vergessen wurde. Wird als „nachtragen“ markiert.',
+    'add.date': 'Datum',
+    'add.kuerzel': 'Kürzel',
+    'add.objekt': 'Standort',
+    'add.from': 'Von',
+    'add.to': 'Bis',
+    'add.note': 'Notiz (optional)',
+    'add.submit': 'Eintragen',
+    'add.choose': '– bitte wählen –',
+    'add.fields': 'Bitte Datum, Kürzel, Standort, Von und Bis ausfüllen.',
+    'add.order': '„Bis“ muss nach „Von“ liegen.',
+    'add.saved': 'Eingetragen: {0} Stunden.',
 
     'flags.added': 'nachtragen',
     'flags.unusual': 'auffällig',
@@ -943,6 +975,7 @@ var I18N = {
     'err.kuerzelEmpty': 'Please enter initials.',
     'err.exists': 'Already exists.',
     'err.notFound': 'Entry not found.',
+    'err.fields': 'Please provide initials, location and date.',
     'err.notAllowed': 'Not allowed – please sign in as admin.',
 
     'mode.demo': 'Demo mode',
@@ -984,6 +1017,23 @@ var I18N = {
     'table.flags': 'Flags',
     'table.empty': 'No entries for this selection.',
     'table.running': 'running',
+    'table.delete': 'Delete entry',
+    'table.confirmDelete': 'Delete this entry?',
+    'table.deleted': 'Entry deleted.',
+
+    'add.title': 'Add a past entry',
+    'add.hint': 'For shifts where the stamp was forgotten. Marked as “added”.',
+    'add.date': 'Date',
+    'add.kuerzel': 'Initials',
+    'add.objekt': 'Location',
+    'add.from': 'From',
+    'add.to': 'To',
+    'add.note': 'Note (optional)',
+    'add.submit': 'Add entry',
+    'add.choose': '– select –',
+    'add.fields': 'Please fill in date, initials, location, from and to.',
+    'add.order': '“To” must be after “From”.',
+    'add.saved': 'Added: {0} hours.',
 
     'flags.added': 'added',
     'flags.unusual': 'unusual',
@@ -1217,6 +1267,11 @@ var Store = (function () {
     arr[i] = Object.assign({}, arr[i], patch);
     saveCache(arr);
     return arr[i];
+  }
+
+  function cacheDrop(id) {
+    var arr = cache().filter(function (z) { return z.id !== id; });
+    saveCache(arr);
   }
 
   /* "_pending" (nur lokal, wartet auf Übertragung) aus dem Cache entfernen. */
@@ -1487,6 +1542,37 @@ var Store = (function () {
       queuePush({ type: 'insert', rec: rec });
       return rec;
     }
+  }
+
+  /* Eintrag durch den Admin anlegen (Nachtrag). Läuft über den angemeldeten
+     Client, weil anon nur offene Einsätze (ende_ts null) anlegen darf. */
+  async function insertZeitAdmin(data) {
+    var rec = {
+      id: data.id || uuid(),
+      kuerzel: String(data.kuerzel || '').trim(),
+      objekt: String(data.objekt || '').trim(),
+      start_ts: data.start_ts,
+      ende_ts: data.ende_ts || null,
+      notiz: data.notiz || null,
+      nachgetragen: true,
+      created_at: new Date().toISOString()
+    };
+    if (!rec.kuerzel || !rec.objekt || !rec.start_ts) throw new Error(msg('err.fields'));
+    if (mode === 'demo') { cachePut(rec); return rec; }
+    var res = await sb.from('zeiten').insert(clean(rec));
+    if (res.error) throw res.error;
+    cachePut(rec);
+    return rec;
+  }
+
+  /* Eintrag durch den Admin löschen (Fehleingabe). */
+  async function deleteZeitAdmin(id) {
+    if (mode !== 'demo') {
+      var res = await sb.from('zeiten').delete().eq('id', id);
+      if (res.error) throw res.error;
+    }
+    cacheDrop(id);
+    return true;
   }
 
   /* Eintrag ändern (Fertig-Stempeln, Notiz, Foto). */
@@ -1818,6 +1904,8 @@ var Store = (function () {
     updatePersonal: updatePersonal,
     deletePersonal: deletePersonal,
     uploadFoto: uploadFoto,
+    insertZeitAdmin: insertZeitAdmin,
+    deleteZeitAdmin: deleteZeitAdmin,
     signIn: signIn,
     signOut: signOut,
     getSession: getSession,
